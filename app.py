@@ -12,18 +12,14 @@ import sys
 #
 
      
-h)
 
 if not "--path" in sys.argv:
      print("set path")
+     exit()
 
 path = sys.argv[sys.argv.index("--path") + 1] if "--path" in sys.argv else ""
 
 
-#Проверка закачки
-if "--show-batch" in sys.argv:
-     loader.show_batch(max_n=9)
-     print("loader.show_batch()")
 
 
 #print(get_image_files("input"))
@@ -33,7 +29,6 @@ if "--show-batch" in sys.argv:
 
 label_function = lambda f: str(f).split("\\")[-2]
 
-path = "input"
 
 items = DataBlock(blocks=(ImageBlock, CategoryBlock), 
                        get_items=get_image_files, 
@@ -42,4 +37,10 @@ items = DataBlock(blocks=(ImageBlock, CategoryBlock),
                         item_tfms=Resize(224, method=ResizeMethod.Pad))
 
 
-loader = items.dataloaders(pat
+loader = items.dataloaders(path)
+
+
+#Проверка закачки
+if "--show-batch" in sys.argv:
+     loader.show_batch(max_n=9)
+     print("loader.show_batch()")
