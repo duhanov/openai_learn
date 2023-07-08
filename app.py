@@ -48,6 +48,6 @@ if "--show-batch" in sys.argv:
 
 if "--learn" in sys.argv:
      print("Go learn!")     
-     learn = cnn_learner(loader, resnet34, metrics=error_rate)
+     learn = vision_learner(loader, resnet34, metrics=error_rate)
      learn.fine_tune(10)
      lear.save("model")
