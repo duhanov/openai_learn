@@ -44,3 +44,10 @@ loader = items.dataloaders(path)
 if "--show-batch" in sys.argv:
      loader.show_batch(max_n=9)
      print("loader.show_batch()")
+
+
+if "--learn" in sys.argv:
+     print("Go learn!")     
+     learn = cnn_learner(loader, resnet34, metrics=error_rate)
+     learn.fine_tune(10)
+     lear.save("model")
