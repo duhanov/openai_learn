@@ -27,7 +27,7 @@ path = sys.argv[sys.argv.index("--path") + 1] if "--path" in sys.argv else ""
 #learn.fine_tune(1)
 
 
-label_function = lambda f: str(f).split("\\")[-2]
+label_function = lambda f: str(f).split("/")[-2]
 
 
 items = DataBlock(blocks=(ImageBlock, CategoryBlock), 
