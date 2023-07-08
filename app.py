@@ -31,10 +31,10 @@ label_function = lambda f: str(f).split("\\")[-2]
 
 
 items = DataBlock(blocks=(ImageBlock, CategoryBlock), 
-                       get_items=get_image_files, 
-                       splitter=RandomSplitter(),
-                        get_y=label_function,
-                        item_tfms=Resize(224, method=ResizeMethod.Pad))
+                         get_items=get_image_files, 
+                         splitter=RandomSplitter(),
+                         get_y=label_function,
+                         item_tfms=Resize(224, method=ResizeMethod.Pad))
 
 
 loader = items.dataloaders(path)
